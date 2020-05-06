@@ -22,6 +22,6 @@ function checkError(response) {
  */
 export default function ApiRequest(url) {
   return fetch(url)
-    .then(checkError())
+    .then(checkError)
     .then(response => response.json());
 }

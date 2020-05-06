@@ -1,7 +1,3 @@
-/**
- * Gets words from backend API
- */
-
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { LOAD_WORDS } from 'containers/Words/constants';
 import { wordsLoaded, wordsLoadError } from 'containers/Words/actions';
@@ -9,14 +5,14 @@ import { wordsLoaded, wordsLoadError } from 'containers/Words/actions';
 import apiRequest from 'utils/apiRequest';
 
 /**
- * Github repos request/response handler
+ * Gets words list from backend API
  */
 export function* getWords() {
   const requestURL = `https://api.github.com/users/imgeorge220/repos?type=all&sort=updated`;
 
   try {
-    // Call our request helper (see 'utils/request')
-    // const words = yield call(apiRequest, requestURL);
+    // Call request helper (see 'utils/apiRequest')
+    const words = yield call(apiRequest, requestURL);
     const test = ['new', 'words', 'test'];
     yield put(wordsLoaded(test));
   } catch (err) {
