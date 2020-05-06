@@ -4,17 +4,37 @@
  *
  */
 import produce from 'immer';
-import { DEFAULT_ACTION } from './constants';
+import {
+  LOAD_WORDS,
+  LOAD_WORDS_SUCCESS,
+  LOAD_WORDS_FAILURE,
+} from './constants';
 
 export const initialState = {
-  words: ['this', 'is', 'just', 'a', 'practice', 'set', 'of', 'words'],
+  loading: false,
+  error: false,
+  words: false,
 };
 
 /* eslint-disable default-case, no-param-reassign */
 const wordsReducer = (state = initialState, action) =>
-  produce(state, (/* draft */) => {
+  produce(state, draft => {
     switch (action.type) {
-      case DEFAULT_ACTION:
+      case LOAD_WORDS:
+        draft.loading = true;
+        draft.error = false;
+        draft.words = false;
+        break;
+
+      case LOAD_WORDS_SUCCESS:
+        draft.words = action.words;
+        draft.loading = false;
+        draft.error = false;
+        break;
+
+      case LOAD_WORDS_FAILURE:
+        draft.error = action.error;
+        draft.loading = false;
         break;
     }
   });

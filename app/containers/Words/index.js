@@ -4,7 +4,7 @@
  *
  */
 
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
@@ -13,39 +13,50 @@ import { compose } from 'redux';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
-import makeSelectWords from './selectors';
+import WordsList from 'components/WordsList';
+import {
+  makeSelectWords,
+  makeSelectWordsLoading,
+  makeSelectWordsError,
+} from './selectors';
+import { loadWords } from './actions';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 
-export function Words({ words }) {
+export function Words({ words, loading, error, onPageLoad }) {
   useInjectReducer({ key: 'words', reducer });
   useInjectSaga({ key: 'words', saga });
+
+  useEffect(() => {
+    onPageLoad();
+  }, []);
+
+  const wordListProps = { loading, error, words };
 
   return (
     <div>
       <FormattedMessage {...messages.header} />
-      <ul>
-        {words.map(word => (
-          <li>{word}</li>
-        ))}
-      </ul>
+      <WordsList {...wordListProps} />
     </div>
   );
 }
 
 Words.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  words: PropTypes.array.isRequired,
+  loading: PropTypes.bool,
+  error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  words: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
 };
 
 const mapStateToProps = createStructuredSelector({
   words: makeSelectWords(),
+  loading: makeSelectWordsLoading(),
+  error: makeSelectWordsError(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    onPageLoad: () => dispatch(loadWords()),
   };
 }
 

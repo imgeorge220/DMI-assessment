@@ -2,24 +2,27 @@ import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
 /**
- * Direct selector to the words state domain
+ * Words Selectors
  */
 
-const selectWordsDomain = state => state.words || initialState;
-
-/**
- * Other specific selectors
- */
-
-/**
- * Default selector used by Words
- */
+const selectWordsState = state => state.words || initialState;
 
 const makeSelectWords = () =>
   createSelector(
-    selectWordsDomain,
+    selectWordsState,
     substate => substate.words,
   );
 
-export default makeSelectWords;
-export { selectWordsDomain };
+const makeSelectWordsLoading = () =>
+  createSelector(
+    selectWordsState,
+    substate => substate.loading,
+  );
+
+const makeSelectWordsError = () =>
+  createSelector(
+    selectWordsState,
+    substate => substate.error,
+  );
+
+export { makeSelectWords, makeSelectWordsLoading, makeSelectWordsError };
