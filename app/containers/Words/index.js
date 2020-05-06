@@ -18,19 +18,25 @@ import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 
-export function Words() {
+export function Words({ words }) {
   useInjectReducer({ key: 'words', reducer });
   useInjectSaga({ key: 'words', saga });
 
   return (
     <div>
       <FormattedMessage {...messages.header} />
+      <ul>
+        {words.map(word => (
+          <li>{word}</li>
+        ))}
+      </ul>
     </div>
   );
 }
 
 Words.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  words: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({

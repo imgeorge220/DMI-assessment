@@ -11,6 +11,6 @@ export const scope = 'app.containers.Words';
 export default defineMessages({
   header: {
     id: `${scope}.header`,
-    defaultMessage: 'This is the Words container!',
+    defaultMessage: 'Check out all of these aweseme words!',
   },
 });

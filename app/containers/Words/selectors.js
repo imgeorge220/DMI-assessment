@@ -18,7 +18,7 @@ const selectWordsDomain = state => state.words || initialState;
 const makeSelectWords = () =>
   createSelector(
     selectWordsDomain,
-    substate => substate,
+    substate => substate.words,
   );
 
 export default makeSelectWords;
