@@ -21,7 +21,6 @@ const wordsReducer = (state = initialState, action) =>
       case LOAD_WORDS:
         draft.loading = true;
         draft.error = false;
-        // draft.words = false;
         break;
 
       case LOAD_WORDS_SUCCESS:
@@ -38,11 +37,9 @@ const wordsReducer = (state = initialState, action) =>
       case ADD_WORD:
         draft.loading = true;
         draft.error = false;
-        // draft.words = false;
         break;
 
       case ADD_WORD_SUCCESS:
-        console.log(draft.words)
         draft.words.unshift(action.newWord);
         draft.loading = false;
         draft.error = false;
