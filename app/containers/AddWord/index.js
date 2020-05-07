@@ -13,7 +13,7 @@ import { compose } from 'redux';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
-import Form from './Form';
+import Form from 'components/Form';
 import Input from 'components/FormInput';
 import Button from 'components/Button';
 import { changeNewWord } from './actions';
@@ -36,7 +36,7 @@ export function AddWord({ newWord, onChangeNewWord, onSubmitForm }) {
           value={newWord}
           onChange={onChangeNewWord}
         />
-      <Button>Test</Button>
+      <Button value="Submit"/>
       </Form>
     </div>
   );
@@ -58,6 +58,7 @@ function mapDispatchToProps(dispatch) {
     onSubmitForm: evt => {
       evt.preventDefault();
       dispatch(addWord());
+      dispatch(changeNewWord(""));
     },
   };
 }

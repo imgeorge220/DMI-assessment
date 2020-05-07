@@ -9,7 +9,6 @@ import Label from './Label';
 import Input from './Input';
 
 function FormInput({label, id, type, value, onChange}) {
-  console.log({id, type, value})
     return (
     <div>
       <Label>{label}</Label>

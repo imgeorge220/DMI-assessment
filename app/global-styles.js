@@ -16,11 +16,13 @@ const GlobalStyle = createGlobalStyle`
     color: white;
     min-height: 100%;
     min-width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
   }
 
   p,
   label {
-    font-family: Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.5em;
   }
 `;
