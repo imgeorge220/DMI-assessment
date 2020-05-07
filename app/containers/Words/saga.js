@@ -1,9 +1,6 @@
-import { call, put, takeLatest, select } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import { LOAD_WORDS } from 'containers/Words/constants';
-import {
-  wordsLoaded,
-  wordsLoadError,
-} from 'containers/Words/actions';
+import { wordsLoaded, wordsLoadError } from 'containers/Words/actions';
 
 import apiRequest from 'utils/apiRequest';
 

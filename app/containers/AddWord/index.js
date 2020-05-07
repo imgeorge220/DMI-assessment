@@ -7,7 +7,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -36,7 +35,7 @@ export function AddWord({ newWord, onChangeNewWord, onSubmitForm }) {
           value={newWord}
           onChange={onChangeNewWord}
         />
-      <Button value="Submit"/>
+        <Button value="Submit" />
       </Form>
     </div>
   );
@@ -58,7 +57,7 @@ function mapDispatchToProps(dispatch) {
     onSubmitForm: evt => {
       evt.preventDefault();
       dispatch(addWord());
-      dispatch(changeNewWord(""));
+      dispatch(changeNewWord(''));
     },
   };
 }

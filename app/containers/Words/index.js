@@ -7,7 +7,6 @@
 import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -28,7 +27,7 @@ export function Words({ words, loading, error, onPageLoad }) {
   useInjectSaga({ key: 'words', saga });
 
   useEffect(() => {
-    !words && onPageLoad();
+    if (!words) onPageLoad();
   }, []);
 
   const wordListProps = { loading, error, words };
