@@ -2,14 +2,15 @@
  * NavBar
  */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import NavLink from './NavLink';
+import NavDiv from './NavDiv';
 
 function NavBar() {
   return (
-    <div>
-      <Link to="/">WORDS</Link>
-      <Link to="/add">ADD WORD</Link>
-    </div>
+    <NavDiv>
+      <NavLink to="/">WORDS</NavLink>
+      <NavLink to="/add">ADD WORDS</NavLink>
+    </NavDiv>
   );
 }
 

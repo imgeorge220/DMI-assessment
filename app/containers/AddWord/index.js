@@ -14,7 +14,8 @@ import { compose } from 'redux';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import Form from './Form';
-import Input from './Input';
+import Input from 'components/FormInput';
+import Button from 'components/Button';
 import { changeNewWord } from './actions';
 import { makeSelectNewWord } from './selectors';
 import { addWord } from '../Words/actions';
@@ -29,11 +30,13 @@ export function AddWord({ newWord, onChangeNewWord, onSubmitForm }) {
     <div>
       <Form onSubmit={onSubmitForm}>
         <Input
+          label="Enter a new string"
           id="newWord"
-          type="text"
+          type="textarea"
           value={newWord}
           onChange={onChangeNewWord}
         />
+      <Button>Test</Button>
       </Form>
     </div>
   );
