@@ -28,7 +28,7 @@ export function Words({ words, loading, error, onPageLoad }) {
   useInjectSaga({ key: 'words', saga });
 
   useEffect(() => {
-    onPageLoad();
+    !words && onPageLoad();
   }, []);
 
   const wordListProps = { loading, error, words };
