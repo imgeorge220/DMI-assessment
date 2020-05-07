@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { v4 as uuid } from 'uuid';
 
 function WordsList({ loading, error, words }) {
   if (loading) {
@@ -14,7 +15,7 @@ function WordsList({ loading, error, words }) {
     return (
       <ul>
         {words.map(word => (
-          <li>{word}</li>
+          <li key={uuid()}>{word}</li>
         ))}
       </ul>
     );

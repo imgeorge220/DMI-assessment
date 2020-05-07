@@ -8,25 +8,20 @@ import apiRequest from 'utils/apiRequest';
  * Gets words list from backend API
  */
 export function* getWords() {
-  const requestURL = `https://api.github.com/users/imgeorge220/repos?type=all&sort=updated`;
+  const requestURL = `http://localhost:3001`;
 
   try {
     // Call request helper (see 'utils/apiRequest')
     const words = yield call(apiRequest, requestURL);
-    const test = ['new', 'words', 'test'];
-    yield put(wordsLoaded(test));
+    yield put(wordsLoaded(words));
   } catch (err) {
     yield put(wordsLoadError(err));
   }
 }
 
 /**
- * Root saga manages watcher lifecycle
+ * Watcher Saga
  */
 export default function* githubData() {
-  // Watches for LOAD_REPOS actions and calls getRepos when one comes in.
-  // By using `takeLatest` only the result of the latest API call is applied.
-  // It returns task descriptor (just like fork) so we can continue execution
-  // It will be cancelled automatically on component unmount
   yield takeLatest(LOAD_WORDS, getWords);
 }

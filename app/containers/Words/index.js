@@ -46,6 +46,7 @@ Words.propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   words: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  onPageLoad: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({

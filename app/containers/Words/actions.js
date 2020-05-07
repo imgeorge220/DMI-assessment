@@ -3,7 +3,6 @@
  * Words actions
  *
  */
-
 import {
   LOAD_WORDS,
   LOAD_WORDS_SUCCESS,
