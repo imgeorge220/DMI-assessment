@@ -22,7 +22,6 @@ import {
 import { loadWords } from './actions';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
 
 export function Words({ words, loading, error, onPageLoad }) {
   useInjectReducer({ key: 'words', reducer });
@@ -36,7 +35,6 @@ export function Words({ words, loading, error, onPageLoad }) {
 
   return (
     <div>
-      <FormattedMessage {...messages.header} />
       <WordsList {...wordListProps} />
     </div>
   );
