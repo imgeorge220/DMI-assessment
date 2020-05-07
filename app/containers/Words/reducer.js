@@ -6,9 +6,6 @@ import {
   LOAD_WORDS,
   LOAD_WORDS_SUCCESS,
   LOAD_WORDS_FAILURE,
-  ADD_WORD,
-  ADD_WORD_SUCCESS,
-  ADD_WORD_FAILURE,
 } from './constants';
 
 export const initialState = {
@@ -28,7 +25,6 @@ const wordsReducer = (state = initialState, action) =>
         break;
 
       case LOAD_WORDS_SUCCESS:
-        console.log("LOADING")
         draft.words = action.words;
         draft.loading = false;
         draft.error = false;

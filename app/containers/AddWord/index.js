@@ -17,9 +17,9 @@ import Form from './Form';
 import Input from './Input';
 import { changeNewWord } from './actions';
 import { makeSelectNewWord } from './selectors';
-import { addWord } from '../Words/actions';
 import reducer from './reducer';
 import saga from './saga';
+import messages from './messages';
 
 export function AddWord({ newWord, onChangeNewWord, onSubmitForm }) {
   useInjectReducer({ key: 'addWord', reducer });
@@ -27,6 +27,7 @@ export function AddWord({ newWord, onChangeNewWord, onSubmitForm }) {
 
   return (
     <div>
+      <FormattedMessage {...messages.header} />
       <Form onSubmit={onSubmitForm}>
         <Input
           id="newWord"
@@ -54,8 +55,8 @@ function mapDispatchToProps(dispatch) {
     onChangeNewWord: evt => dispatch(changeNewWord(evt.target.value)),
     onSubmitForm: evt => {
       evt.preventDefault();
-      dispatch(addWord());
-    },
+      // dispatch(addWord());
+    }
   };
 }
 
