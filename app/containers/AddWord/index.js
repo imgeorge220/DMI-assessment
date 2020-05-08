@@ -72,13 +72,13 @@ const mapStateToProps = createStructuredSelector({
   success: makeSelectNewWordSuccess(),
 });
 
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     onChangeNewWord: evt => dispatch(changeNewWord(evt.target.value)),
     onSubmitForm: evt => {
-      evt.preventDefault();
+      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       dispatch(addWord());
-      dispatch(changeNewWord(''));
+      dispatch(changeNewWord());
     },
   };
 }

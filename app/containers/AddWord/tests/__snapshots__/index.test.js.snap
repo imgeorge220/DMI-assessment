@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AddWord /> Should render and match the snapshot 1`] = `
+<div>
+  <form
+    class="Form-kd3r69-0 dlxjEv"
+  >
+    <div>
+      <label
+        class="Label-sc-1ve2cgc-0 erEqyp"
+      >
+        Enter a new string
+      </label>
+      <input
+        class="Input-if1qjg-0 daKsjO"
+        id="newWord"
+        type="textarea"
+        value=""
+      />
+    </div>
+    <button
+      class="StyledButton-t20ntd-0 gLPxeV"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;

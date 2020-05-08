@@ -1,48 +1,85 @@
-/**
- *
- * Tests for AddWord
- *
- * @see https://github.com/react-boilerplate/react-boilerplate/tree/master/docs/testing
- *
- */
-
 import React from 'react';
 import { render } from 'react-testing-library';
 import { IntlProvider } from 'react-intl';
-// import 'jest-dom/extend-expect'; // add some helpful assertions
+import { Provider } from 'react-redux';
+import { browserHistory } from 'react-router-dom';
 
-import { AddWord } from '../index';
-import { DEFAULT_LOCALE } from '../../../i18n';
+import { AddWord, mapDispatchToProps } from '../index';
+import { changeNewWord, addWord } from '../actions';
+import configureStore from '../../../configureStore';
 
 describe('<AddWord />', () => {
+  let store;
+
+  beforeAll(() => {
+    store = configureStore({}, browserHistory);
+  });
+
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
     const dispatch = jest.fn();
     render(
-      <IntlProvider locale={DEFAULT_LOCALE}>
-        <AddWord dispatch={dispatch} />
-      </IntlProvider>,
+      <Provider store={store}>
+        <IntlProvider locale="en">
+          <AddWord dispatch={dispatch} />
+        </IntlProvider>
+      </Provider>,
     );
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it('Expect to have additional unit tests specified', () => {
-    expect(true).toEqual(false);
-  });
-
-  /**
-   * Unskip this test to use it
-   *
-   * @see {@link https://jestjs.io/docs/en/api#testskipname-fn}
-   */
-  it.skip('Should render and match the snapshot', () => {
+  it('Should render and match the snapshot', () => {
     const {
       container: { firstChild },
     } = render(
-      <IntlProvider locale={DEFAULT_LOCALE}>
-        <AddWord />
-      </IntlProvider>,
+      <Provider store={store}>
+        <IntlProvider locale="en">
+          <AddWord />
+        </IntlProvider>
+      </Provider>,
     );
     expect(firstChild).toMatchSnapshot();
+  });
+
+  describe('mapDispatchToProps', () => {
+    describe('onChangeNewWord', () => {
+      it('should be injected', () => {
+        const dispatch = jest.fn();
+        const result = mapDispatchToProps(dispatch);
+        expect(result.onChangeNewWord).toBeDefined();
+      });
+
+      it('should dispatch changeNewWord when called', () => {
+        const dispatch = jest.fn();
+        const result = mapDispatchToProps(dispatch);
+        const newWord = 'test string';
+        result.onChangeNewWord({ target: { value: newWord } });
+        expect(dispatch).toHaveBeenCalledWith(changeNewWord(newWord));
+      });
+    });
+
+    describe('onSubmitForm', () => {
+      it('should be injected', () => {
+        const dispatch = jest.fn();
+        const result = mapDispatchToProps(dispatch);
+        expect(result.onSubmitForm).toBeDefined();
+      });
+
+      it('should dispatch addWord and changeNewWord when called', () => {
+        const dispatch = jest.fn();
+        const result = mapDispatchToProps(dispatch);
+        result.onSubmitForm();
+        expect(dispatch).toHaveBeenCalledWith(addWord());
+        expect(dispatch).toHaveBeenCalledWith(changeNewWord());
+      });
+
+      it('should preventDefault if called with event', () => {
+        const preventDefault = jest.fn();
+        const result = mapDispatchToProps(() => {});
+        const evt = { preventDefault };
+        result.onSubmitForm(evt);
+        expect(preventDefault).toHaveBeenCalledWith();
+      });
+    });
   });
 });
