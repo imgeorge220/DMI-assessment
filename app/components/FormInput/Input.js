@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export default styled.input`
+const Input = styled.input`
   display: inline-flex;
   text-align: center;
   justify-content: center;
@@ -15,3 +15,5 @@ export default styled.input`
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 `;
+
+export default Input;

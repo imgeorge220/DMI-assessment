@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export default styled.button`
+const StyledButton = styled.button`
   display: inline-flex;
   text-align: center;
   justify-content: center;
@@ -16,3 +16,5 @@ export default styled.button`
   color: #3041db;
   }
 `;
+
+export default StyledButton;

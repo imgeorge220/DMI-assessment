@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Notifications from 'components/Notifications';
 import { v4 as uuid } from 'uuid';
 
 function WordsList({ loading, error, words }) {
   if (loading) {
-    return <p>Loading...</p>;
+    return <Notifications loading={true}/>;
   }
 
   if (error !== false) {
-    return <p>Oops. There was an error. Please try again.</p>;
+    return <Notifications error={true}/>
   }
 
   if (words !== false) {

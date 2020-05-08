@@ -13,4 +13,28 @@ const makeSelectNewWord = () =>
     substate => substate.newWord,
   );
 
-export { selectAddWordState, makeSelectNewWord };
+const makeSelectNewWordLoading = () =>
+  createSelector(
+    selectAddWordState,
+    substate => substate.loading,
+  );
+
+const makeSelectNewWordError = () =>
+  createSelector(
+    selectAddWordState,
+    substate => substate.error,
+  );
+
+const makeSelectNewWordSuccess = () =>
+  createSelector(
+    selectAddWordState,
+    substate => substate.success,
+  );
+
+export {
+  selectAddWordState,
+  makeSelectNewWord,
+  makeSelectNewWordLoading,
+  makeSelectNewWordError,
+  makeSelectNewWordSuccess,
+};

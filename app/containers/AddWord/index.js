@@ -15,18 +15,34 @@ import { useInjectReducer } from 'utils/injectReducer';
 import Form from 'components/Form';
 import Input from 'components/FormInput';
 import Button from 'components/Button';
-import { changeNewWord } from './actions';
-import { makeSelectNewWord } from './selectors';
-import { addWord } from '../Words/actions';
+import Notifications from 'components/Notifications';
+import { changeNewWord, addWord } from './actions';
+import {
+  makeSelectNewWord,
+  makeSelectNewWordLoading,
+  makeSelectNewWordError,
+  makeSelectNewWordSuccess,
+} from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
-export function AddWord({ newWord, onChangeNewWord, onSubmitForm }) {
+export function AddWord({
+  newWord,
+  loading,
+  error,
+  success,
+  onChangeNewWord,
+  onSubmitForm,
+}) {
   useInjectReducer({ key: 'addWord', reducer });
   useInjectSaga({ key: 'addWord', saga });
 
+  const notificationProps = { loading, error, success };
+  console.log(notificationProps);
+
   return (
     <div>
+      <Notifications {...notificationProps} />
       <Form onSubmit={onSubmitForm}>
         <Input
           label="Enter a new string"
@@ -42,6 +58,9 @@ export function AddWord({ newWord, onChangeNewWord, onSubmitForm }) {
 }
 
 AddWord.propTypes = {
+  loading: PropTypes.bool,
+  error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  success: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   newWord: PropTypes.string,
   onChangeNewWord: PropTypes.func,
   onSubmitForm: PropTypes.func,
@@ -49,6 +68,9 @@ AddWord.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   newWord: makeSelectNewWord(),
+  loading: makeSelectNewWordLoading(),
+  error: makeSelectNewWordError(),
+  success: makeSelectNewWordSuccess(),
 });
 
 function mapDispatchToProps(dispatch) {

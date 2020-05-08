@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
-export default styled.label`
+const Label = styled.label`
   display: block;
   color: white;
   margin: 10px;
 `;
+
+export default Label;
