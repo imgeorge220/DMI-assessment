@@ -23,6 +23,9 @@ const addWordReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
       case CHANGE_NEW_WORD:
+        draft.loading = false;
+        draft.error = false;
+        draft.success = false;
         draft.newWord = action.newWord;
         break;
 
