@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import CenterDiv from 'components/CenterDiv';
 import NotificationBar from './NotificationBar';
 
-function Notifications({ loading, error, success }) {
+function Notifications({ loading, error, success, errMessage }) {
   let color;
   let message;
 
@@ -21,7 +21,7 @@ function Notifications({ loading, error, success }) {
     message = 'Word Successfully Added!';
   } else if (error) {
     color = '#BF3F3F';
-    message = 'Oops. There was an error. Please try again.';
+    message = errMessage || 'Oops. There was an error. Please try again.';
   } else return null;
 
   return (
@@ -37,6 +37,7 @@ Notifications.propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   success: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  errMessage: PropTypes.string,
 };
 
 export default Notifications;

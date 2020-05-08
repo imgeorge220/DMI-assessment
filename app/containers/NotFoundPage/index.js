@@ -6,14 +6,13 @@
  */
 
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-
-import messages from './messages';
+import Notifications from 'components/Notifications';
 
 export default function NotFound() {
+  const errMessage = '404 - Sorry the page you are looking for does not exist';
   return (
     <h1>
-      <FormattedMessage {...messages.header} />
+      <Notifications error errMessage={errMessage} />
     </h1>
   );
 }
