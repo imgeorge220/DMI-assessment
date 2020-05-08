@@ -5,11 +5,11 @@ import { v4 as uuid } from 'uuid';
 
 function WordsList({ loading, error, words }) {
   if (loading) {
-    return <Notifications loading={true}/>;
+    return <Notifications loading />;
   }
 
   if (error !== false) {
-    return <Notifications error={true}/>
+    return <Notifications error />;
   }
 
   if (words !== false) {

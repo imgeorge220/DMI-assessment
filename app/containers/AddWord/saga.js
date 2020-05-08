@@ -31,6 +31,6 @@ export function* addWord() {
 /**
  * Watcher Saga
  */
-export default function* wordsWatcher() {
+export default function* addWordsWatcher() {
   yield takeLatest(ADD_WORD, addWord);
 }

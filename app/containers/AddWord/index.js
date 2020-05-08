@@ -38,7 +38,6 @@ export function AddWord({
   useInjectSaga({ key: 'addWord', saga });
 
   const notificationProps = { loading, error, success };
-  console.log(notificationProps);
 
   return (
     <div>
