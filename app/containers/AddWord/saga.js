@@ -1,3 +1,8 @@
+/**
+ *
+ * AddWord Saga
+ *
+ */
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import apiRequest from 'utils/apiRequest';
 import { ADD_WORD } from './constants';
@@ -5,7 +10,7 @@ import { wordAdded, wordAddError } from './actions';
 import { makeSelectNewWord } from './selectors';
 
 /**
- * posts word to backend API
+ * posts new word to backend API
  */
 export function* addWord() {
   const newWord = yield select(makeSelectNewWord());

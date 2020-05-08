@@ -3,7 +3,6 @@
  * AddWord constants
  *
  */
-
 export const CHANGE_NEW_WORD = 'app/AddWord/CHANGE_NEW_WORD';
 
 export const ADD_WORD = 'app/AddWord/ADD_WORD';

@@ -17,6 +17,7 @@ function checkError(response) {
  * Handles an API request to a given url
  *
  * @param  {string} url the API endpoint
+ * @param  {object} options any headers and/or data for the API request
  *
  * @return {object|undefined} Returns either the response (in json), or throws an error
  */

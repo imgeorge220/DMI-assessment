@@ -3,7 +3,6 @@
  * AddWord actions
  *
  */
-
 import {
   CHANGE_NEW_WORD,
   ADD_WORD,

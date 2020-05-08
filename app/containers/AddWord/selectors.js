@@ -1,9 +1,10 @@
+/**
+ *
+ * AddWords Selectors
+ *
+ */
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
-
-/**
- * AddWords Selectors
- */
 
 const selectAddWordState = state => state.addWord || initialState;
 

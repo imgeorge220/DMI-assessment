@@ -1,3 +1,8 @@
+/**
+ *
+ * NotificationBar
+ *
+ */
 import styled from 'styled-components';
 
 const NotificationBar = styled.div`

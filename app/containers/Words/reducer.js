@@ -1,5 +1,7 @@
 /*
+ *
  * Words reducer
+ *
  */
 import produce from 'immer';
 import {
