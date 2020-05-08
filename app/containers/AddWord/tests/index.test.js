@@ -70,7 +70,7 @@ describe('<AddWord />', () => {
         const result = mapDispatchToProps(dispatch);
         result.onSubmitForm();
         expect(dispatch).toHaveBeenCalledWith(addWord());
-        expect(dispatch).toHaveBeenCalledWith(changeNewWord());
+        expect(dispatch).toHaveBeenCalledWith(changeNewWord(''));
       });
 
       it('should preventDefault if called with event', () => {

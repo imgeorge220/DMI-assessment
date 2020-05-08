@@ -78,7 +78,7 @@ export function mapDispatchToProps(dispatch) {
     onSubmitForm: evt => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       dispatch(addWord());
-      dispatch(changeNewWord());
+      dispatch(changeNewWord(''));
     },
   };
 }
