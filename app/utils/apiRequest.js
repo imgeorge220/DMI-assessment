@@ -20,8 +20,8 @@ function checkError(response) {
  *
  * @return {object|undefined} Returns either the response (in json), or throws an error
  */
-export default function ApiRequest(url) {
-  return fetch(url)
+export default function ApiRequest(url, options) {
+  return fetch(url, options)
     .then(checkError)
     .then(response => response.json());
 }

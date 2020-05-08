@@ -38,10 +38,9 @@ export function addWord() {
   };
 }
 
-export function wordAdded(newWord) {
+export function wordAdded() {
   return {
     type: ADD_WORD_SUCCESS,
-    newWord,
   };
 }
 
